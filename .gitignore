@@ -36,3 +36,5 @@ package.json
 package-lock.json
 .cpcache
 resources/brepl_client.js
+public/js/cljs-runtime
+/public/js/cljs-runtime

@@ -4,6 +4,8 @@ hello.chors = "\u0418\u0431\u043E \u0435\u0441\u043B\u0438 \u0432\u044B \u0431\u
 hello.handle_key_down = (function hello$handle_key_down(event){
 var key = event.key;
 var key_names = new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Enter","Control","Shift","Alt","Tab","Escape","Meta","Backspace"], null);
+re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"key-press","key-press",850740112),key], null));
+
 if(cljs.core.not(helpers.contains_str_QMARK_(key_names,key))){
 cljs.core.reset_BANG_(hello.typed_text,[cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(hello.typed_text)),cljs.core.str.cljs$core$IFn$_invoke$arity$1(key)].join(''));
 } else {

@@ -2,7 +2,10 @@
    (:require [reagent.core :as r]
              [reagent.dom :as rd]
              [components :as c]
-             [helpers :as h]))
+             [re-frame.core :as rf]
+             [helpers :as h]
+             [effect-handlers]
+             [event-handlers]))
 
 (def typed-text (r/atom ""))
 
@@ -11,7 +14,8 @@
  
 (defn handle-key-down [event]
   (let [key (.-key event)
-         key-names ["Enter" "Control" "Shift" "Alt" "Tab" "Escape" "Meta" "Backspace"]] 
+         key-names ["Enter" "Control" "Shift" "Alt" "Tab" "Escape" "Meta" "Backspace"]]
+    (rf/dispatch [:key-press key])
     (when (not (h/contains-str? key-names key))
       (reset! typed-text (str @typed-text key)))
     (when (h/first-diff chors @typed-text)
@@ -31,4 +35,3 @@
   (print "Hello")
   (mountit)
   )
-
